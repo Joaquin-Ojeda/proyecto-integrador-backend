@@ -1,0 +1,5 @@
+GET http://localhost:3000/api/tareas HTTP/1.1
+
+
+#####
+DELETE http://localhost:3000/api/tareas/66674c60f73d34b6f311fbfb HTTP/1.1

@@ -9,7 +9,7 @@ const URI = `mongodb+srv://${process.env.USERTAREASDB}:${process.env.PASSTAREASD
 const conectarDB = async ()=>{
     try{
         await mongoose.connect(URI);
-        console.log("DB Tareas conectada.");
+        console.log("DB Blog conectada.");
     }catch(error){
         console.log(error);
         process.exit(1);

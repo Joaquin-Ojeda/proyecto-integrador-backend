@@ -1,10 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const tareaRouter = require('./routers/tareaRouter');
+const articleRouter = require('./routers/articleRouter');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
 
+/*
 // Permitir CORS solo para tu dominio específico
 const corsOptions = {
     origin: 'https://aws-nube.d9ftlm8bplh8v.amplifyapp.com/',
@@ -25,8 +26,9 @@ app.use((req, res, next) => {
     res.status(403).send('Access denied'); // Denegar el acceso si el origen no es válido
   }
 });
+*/
 
-app.use('/api/tareas', tareaRouter);
+app.use('/api/articles', articleRouter);
 
 app.listen(PORT, '0.0.0.0', ()=>{
     console.log(`El servidor esta escuchando en el puerto ${PORT}`);

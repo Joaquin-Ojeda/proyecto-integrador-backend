@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
 
-const tareaSchema = mongoose.Schema(
+const articleSchema = mongoose.Schema(
     {
         titulo: {
+            type: String,
+            required: true
+        },
+        subTitulo: {
             type: String,
             required: true
         },
@@ -10,19 +14,19 @@ const tareaSchema = mongoose.Schema(
             type: String,
             required: true
         },
-        asignado: {
+        imagen: {
             type: String,
             required: true
         },
-        fecha_fin: {
+        fecha: {
             type: Date,
             required: true
         },
-        estado: {
+        categoria: {
             type: String,
             required: true
         }
     }
 );
 
-module.exports = mongoose.model('Tareas', tareaSchema);
+module.exports = mongoose.model('Articles', articleSchema);

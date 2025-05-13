@@ -7,6 +7,7 @@ const articleRouter = express.Router();
 articleRouter.use(express.json());
 
 articleRouter.get('/', articleController.readArticles);
+articleRouter.get('/category/:category', articleController.readArticlesByCategory);
 articleRouter.get('/:id', articleController.readArticleById);
 articleRouter.post('/', articleController.createArticle);
 articleRouter.put('/:id', articleController.updateArticle);

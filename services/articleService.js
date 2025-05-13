@@ -8,13 +8,17 @@ exports.getArticleById = (id)=>{
     return articleRepository.getArticleByIdRepo(id);
 };
 
+exports.getArticlesByCategory = (category)=>{
+    return articleRepository.getArticlesByCategoryRepo(category);
+}
+
 exports.deleteArticleByIdServ = (id) => {
     return articleRepository.deleteArticleByIdRepo(id);
 };
 
 exports.postArticle = async(article) => {
     try {
-        return articleRepository.postArticleRepo(article);
+        return await articleRepository.postArticleRepo(article);
     } catch (error) {
         console.log(error);
     }

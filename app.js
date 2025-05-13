@@ -28,8 +28,11 @@ app.use((req, res, next) => {
 });
 */
 
+app.use(cors()); //<--- permite todas los orígenes
+
+
 app.use('/api/articles', articleRouter);
 
 app.listen(PORT, '0.0.0.0', ()=>{
     console.log(`El servidor esta escuchando en el puerto ${PORT}`);
-})
+});

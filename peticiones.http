@@ -1,5 +1,49 @@
-GET http://localhost:3000/api/articles HTTP/1.1
+### Obtener todos los artículos
+GET http://localhost:3000/api/articles
+Content-Type: application/json
 
+###
 
-#####
-DELETE http://localhost:3000/api/articles/66674c60f73d34b6f311fbfb HTTP/1.1
+### Obtener un artículo por ID
+GET http://localhost:3000/api/articles/67faa589a4f43e97d85aa4b2
+Content-Type: application/json
+
+###
+
+### Obtener artículos por categoría
+GET http://localhost:3000/api/articles/category/noticias
+Content-Type: application/json
+
+### Crear un nuevo artículo
+POST http://localhost:3000/api/articles
+Content-Type: application/json
+
+{
+  "titulo": "Artículo de prueba desde VSCode",
+  "subTitulo": "Subtitulo de prueba",
+  "descripcion": "Este es un artículo de ejemplo.",
+  "imagen": "https://i.ibb.co/Y468f0JP/20250425anafrank.jpg",
+  "fecha": "2025-05-01T00:00:00.000Z",
+  "categoria": "Noticias"
+}
+
+###
+
+### Actualizar un artículo
+PUT http://localhost:3000/api/articles/67faa65ea4f43e97d85aa4b7
+Content-Type: application/json
+
+{
+  "titulo": "Título actualizado",
+  "subTitulo": "Subtitulo actualizado",
+  "descripcion": "Contenido actualizado.",
+  "imagen": "https://ejemplo.com/nueva-imagen.jpg",
+  "fecha": "2025-05-01T00:00:00.000Z",
+  "categoria": "Pasatiempo"
+}
+
+###
+
+### Eliminar un artículo
+DELETE http://localhost:3000/api/articles/67faa65ea4f43e97d85aa4b7
+Content-Type: application/json

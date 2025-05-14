@@ -7,9 +7,9 @@ exports.readArticles = async (req, res)=>{
     }catch(error){
         console.log(error)
         res.status(500).send("Error al conseguir articulos.");
-    }
-    
+    }    
 };
+
 
 exports.readArticleById = async (req, res)=>{
     try{
@@ -25,6 +25,23 @@ exports.readArticleById = async (req, res)=>{
         res.status(500).send("Error al encontrar articulo.");
     }
 };
+
+exports.readArticlesByCategory = async (req, res)=>{
+    try{
+        const articles = await articleService.getArticlesByCategory(req.params.category);
+        if(articles){
+            res.status(200).send(articles);
+        }else{
+            res.status(404).send("Error al encontrar articulos de la categoria: "+req.params.category)
+        }
+        
+    }catch(error){
+        console.log(error)
+        res.status(500).send("Error al encontrar articulos.");
+    }
+}
+
+
 
 exports.deleteArticleById = async (req, res) => {
     try {
@@ -45,7 +62,7 @@ exports.deleteArticleById = async (req, res) => {
 exports.createArticle = async(req, res) => {
     try {
         const article = await articleService.postArticle(req.body)
-        res.status(200).send(article);
+        res.status(201).send(article);
     } catch (error) {
         console.log(error);
         res.status(500).send("Hubo un error al crear la articulo.")

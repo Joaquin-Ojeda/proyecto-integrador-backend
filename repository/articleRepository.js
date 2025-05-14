@@ -13,6 +13,7 @@ exports.getArticlesRepo = async ()=>{
     }
 };
 
+
 exports.getArticleByIdRepo = async (id)=>{
     try{
         let article = await Articles.findById(id);
@@ -21,6 +22,15 @@ exports.getArticleByIdRepo = async (id)=>{
         console.log(error);
     }
 };
+
+exports.getArticlesByCategoryRepo = async (category)=>{
+    try{
+        let articles = await Articles.find({ categoria: { $regex: new RegExp(`^${category}$`, 'i') } });
+        return articles;
+    }catch(error){
+        console.log(error);
+    }
+}
 
 exports.deleteArticleByIdRepo = async (id) => {
     try{
@@ -38,26 +48,30 @@ exports.deleteArticleByIdRepo = async (id) => {
     }
 };
 
-exports.postArticleRepo = async(Articles) => {
+exports.postArticleRepo = async (articleData) => {
     try {
-        let newArticle = new Articles(article);
+        let newArticle = new Articles(articleData); // Articles es el modelo importado
         await newArticle.save();
+        return newArticle;
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        throw error;
     }
 };
+
 
 exports.updateArticle = async (id, article)=>{
     try{
         let identifier = {_id: id};
-        let body = {    
-            titulo: Articles.titulo,
-            subTitulo: Articles.subTitulo,
-            descripcion: Articles.descripcion,
-            imagen: Articles.imagen,
-            fecha: Articles.fecha,
-            categoria: Articles.categoria
+        let body = {
+            titulo: article.titulo,
+            subTitulo: article.subTitulo,
+            descripcion: article.descripcion,
+            imagen: article.imagen,
+            fecha: article.fecha,
+            categoria: article.categoria
         };
+
         let tareaNueva = await Articles.updateOne(identifier, body, {new: true});
         return tareaNueva;
     }catch(error){
